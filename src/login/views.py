@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from django.utils.timezone import now
-from .documents import UserDocument
 from django.contrib.auth.models import User
 from django.contrib import messages
 
