@@ -10,7 +10,6 @@ from django.contrib import messages
 
 
 def log_login_attempt(username, success, ip_address):
-    """ Registra intentos de login (exitosos o fallidos) en Elasticsearch """
     user_log = UserDocument(
         username=username,
         last_login_attempt=now(),
@@ -29,15 +28,11 @@ def vulnerable_login(request):
         password = request.POST.get('password', '')
         try:
             user = User.objects.get(username=username)
-            # No se recomienda guardar contraseñas en texto plano
             if user.password == password:
-                login(request, user)  # Llama al método login correctamente
+                login(request, user)
                 messages.success(request, 'Inicio de sesión exitoso.')
-                # Registrar intento de login en Elasticsearch
-                #log_login_attempt(username, success, ip_address)
-                return redirect('dashboard') 
+                return redirect('dashboard')
         except User.DoesNotExist:
-            # Error de autenticación
             messages.error(request, 'Usuario o contraseña incorrectos.')
     return render(request, 'login/vulnerable_login.html')
 

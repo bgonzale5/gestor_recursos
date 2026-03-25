@@ -31,12 +31,6 @@ ALLOWED_HOSTS = []
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': 'http://elasticsearch:9200'  # Usa el nombre del servicio de Docker
-    },
-}
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_elasticsearch_dsl',
     'src.accounts',
     'src.resources',
     'src.materials',

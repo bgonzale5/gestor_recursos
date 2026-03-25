@@ -23,7 +23,6 @@ services:
       - db
     environment:
       - DATABASE_URL=postgres://admin:admin@db:5432/gestor_recursos
-      - ELASTICSEARCH_URL=http://elasticsearch:9200  # Referencia a elasticsearch (mismo nombre del contenedor)
     networks:
       - app_network  # Conectado a la red externa
 
